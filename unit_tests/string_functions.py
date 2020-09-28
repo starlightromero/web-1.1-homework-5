@@ -1,27 +1,36 @@
 """Functions to manipulate strings."""
 
+
 def greet_by_name(name):
-    """Returns a greeting to the given person."""
-    greeting = "Hello, " + name + "!"
+    """Return a greeting to the given person."""
+    if name:
+        greeting = "Hello, " + name + "!"
+    else:
+        greeting = "Hello"
     return greeting
 
-def reverse(str):
-    """Reverses the characters in a string."""
-    return str[::-1]
 
-def reverse_words(str):
+def reverse(string):
+    """Reverses the characters in a string."""
+    return string[::-1]
+
+
+def reverse_words(string):
     """Reverses the letters in each word of a string."""
-    words = str.split()
+    if not string:
+        return ""
+    words = string.split()
     new_words = reverse(words[0])
     for word in words[1:]:
-        new_words += ' ' + reverse(word)
+        new_words += " " + reverse(word)
     return new_words
 
-def sarcastic(str):
-    """ReTuRnS tHe SaRcAsTiC vErSiOn Of A sTrInG"""
-    new_string = ''
+
+def sarcastic(string):
+    """ReTuRnS tHe SaRcAsTiC vErSiOn Of A sTrInG."""
+    new_string = ""
     capitalize = True
-    for letter in str:
+    for letter in string:
         if letter.isalpha():
             new_string += letter.upper() if capitalize else letter.lower()
             capitalize = not capitalize
@@ -29,15 +38,13 @@ def sarcastic(str):
             new_string += letter
     return new_string
 
-# TODO: This function contains a bug: If the sentence is empty, it throws an
-# error. Write a unit test to catch the error (it should fail), then fix the 
-# error to make the test pass.
+
 def find_longest_word(sentence):
-    """Returns the longest word in a sentence."""
+    """Return the longest word in a sentence."""
     words_list = sentence.split()
     print(words_list)
-    longest_word = words_list[0]
+    longest_word = ""
     for word in words_list:
         if len(word) > len(longest_word):
             longest_word = word
-    return word
+    return longest_word
